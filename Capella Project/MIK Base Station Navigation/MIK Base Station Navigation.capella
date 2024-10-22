@@ -45,22 +45,28 @@
         <ownedOperationalActivities xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
             id="f1b0f61c-79b0-4c7c-94b5-cbdaa510d851" name="Root Operational Activity">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-              id="ec64e099-ce1a-478d-83c5-92e617338019" name="Запрос координат для управления БВС"/>
+              id="ec64e099-ce1a-478d-83c5-92e617338019" name="Получение координат и обработка"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-              id="e1bc4eb3-1c85-4391-be52-4da6ef985a8a" name="Предоставление данных о себе"/>
+              id="e1bc4eb3-1c85-4391-be52-4da6ef985a8a" name="Предоставление данных"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="5b92df46-f4cf-4a64-9812-8629c47802b9" name="Работа в режиме отладки"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="dac9a6bb-74ba-4634-a63c-bff60d41a80d" name="Тестирование устройства"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-              id="f2603efb-3ff1-4008-be69-3ee8f7dc10cb" name="Взаимодействие с пользовательским интерфейсом"/>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="a1a7d72b-9051-4023-b1e4-6b94944f2472" name="Работа в режиме пользовательского интерфейса"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+              id="4d9096fc-15be-4a5a-88d0-589f2d2c256a" name="Обновление базы данных"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+              id="64f86726-f966-4310-9fdc-619fbd954f10" name="Симуляция работы БВС в режиме автопилотирования с модулем геолокации"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+              id="dad9fc47-39b1-4084-9121-a160acd10a49" name="Управление БВС"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
+              id="33e12995-2fbc-44c4-944b-bac3ade0df7f" name="Полет"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="5d4a06dc-aaeb-4a23-a599-4ca6a19e8eaa" name="Запрос" target="#e1bc4eb3-1c85-4391-be52-4da6ef985a8a"
               source="#ec64e099-ce1a-478d-83c5-92e617338019"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="9b19297a-d54a-41a4-89ec-25be0a38d2f2" name="Ответ" target="#ec64e099-ce1a-478d-83c5-92e617338019"
+              id="9b19297a-d54a-41a4-89ec-25be0a38d2f2" name="Координаты" target="#ec64e099-ce1a-478d-83c5-92e617338019"
               source="#e1bc4eb3-1c85-4391-be52-4da6ef985a8a"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="904782fb-d00d-4fc9-848f-6dbd9260e83d" name="Отладочные команды"
@@ -69,11 +75,23 @@
               id="1c3fabb5-713b-4126-9fdc-47b13a15ced3" name="Ответ" target="#dac9a6bb-74ba-4634-a63c-bff60d41a80d"
               source="#5b92df46-f4cf-4a64-9812-8629c47802b9"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="7fdbd9ce-01c6-4ec3-b592-0f93380f8b97" name="Команды" target="#a1a7d72b-9051-4023-b1e4-6b94944f2472"
-              source="#f2603efb-3ff1-4008-be69-3ee8f7dc10cb"/>
+              id="70435ac7-a472-416e-b4d4-4998612c4e33" name="Файл базы данных" target="#a1a7d72b-9051-4023-b1e4-6b94944f2472"
+              source="#4d9096fc-15be-4a5a-88d0-589f2d2c256a"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="1886531d-0761-47a2-b897-a6f1f18a28f8" name="Информация" target="#f2603efb-3ff1-4008-be69-3ee8f7dc10cb"
+              id="e63882c7-dad4-4c26-9b32-569ab50b3410" name="Данные о виртуальном окружении"
+              target="#5b92df46-f4cf-4a64-9812-8629c47802b9" source="#64f86726-f966-4310-9fdc-619fbd954f10"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="ed2fadf2-1735-40b8-aa41-718c9cd166d8" name="Реакции на внешнии факторы"
+              target="#64f86726-f966-4310-9fdc-619fbd954f10" source="#5b92df46-f4cf-4a64-9812-8629c47802b9"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="4cdd05e2-2abb-4326-8c3d-22e8e4b075f0" name="Сигналы" target="#dad9fc47-39b1-4084-9121-a160acd10a49"
+              source="#ec64e099-ce1a-478d-83c5-92e617338019"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="da7036f4-e07c-44ef-a8ab-d1f3dd97f116" name="Ответ" target="#4d9096fc-15be-4a5a-88d0-589f2d2c256a"
               source="#a1a7d72b-9051-4023-b1e4-6b94944f2472"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="9bcd7e26-4ecd-42a0-8abb-d679ff189a2f" name="" target="#33e12995-2fbc-44c4-944b-bac3ade0df7f"
+              source="#dad9fc47-39b1-4084-9121-a160acd10a49"/>
         </ownedOperationalActivities>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
@@ -89,24 +107,14 @@
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="4559defc-aa99-431f-af31-dce529b508d3"
           name="Operational Entities">
-        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="c4e4158f-3642-4c3f-9745-849f69dd27e1"
-            name="Полетный контроллер" abstractType="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="fef71fa1-3c90-4188-9efe-cbaa3388c344"
             name="Базовые станции" abstractType="#32471b07-84a6-413e-860b-a48e6e88bfb1"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="a4a1de75-b089-454a-aaed-9c606be34d87"
             name="Оператор" abstractType="#6bb46f45-d71c-4af6-9caf-d40a5e2e7368"/>
-        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"
-            name="Полетный контроллер">
-          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="d622765f-3d8f-4e8b-8736-2d8c2d114b5c" targetElement="#ec64e099-ce1a-478d-83c5-92e617338019"
-              sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
-          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="89aeb9c5-a99d-4dbd-8dc9-498ac26a65b6" targetElement="#5b92df46-f4cf-4a64-9812-8629c47802b9"
-              sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
-          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="3e7ee9f7-ef2b-4537-92fb-8129b5081d0a" targetElement="#a1a7d72b-9051-4023-b1e4-6b94944f2472"
-              sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
-        </ownedEntities>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="81b3916f-383c-421f-ad6b-999cbeacab23"
+            name="Симулятор" abstractType="#cd8849ae-399f-467d-94a0-207d69247072"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="db36fcdc-b7dc-481c-901d-f6139d0370b3"
+            name="БВС" abstractType="#5333fb48-9435-4794-aa11-eb1deb116156"/>
         <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="32471b07-84a6-413e-860b-a48e6e88bfb1"
             name="Базовые станции" actor="true" human="true">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
@@ -119,8 +127,37 @@
               id="1bbff6d2-fcb7-498b-9964-f767ac8e9343" targetElement="#dac9a6bb-74ba-4634-a63c-bff60d41a80d"
               sourceElement="#6bb46f45-d71c-4af6-9caf-d40a5e2e7368"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="aea311cc-fa41-4383-a0df-a5d0b0c1b09e" targetElement="#f2603efb-3ff1-4008-be69-3ee8f7dc10cb"
+              id="90911d32-f1d6-4e18-bb76-6b0fd51c99dd" targetElement="#4d9096fc-15be-4a5a-88d0-589f2d2c256a"
               sourceElement="#6bb46f45-d71c-4af6-9caf-d40a5e2e7368"/>
+        </ownedEntities>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="cd8849ae-399f-467d-94a0-207d69247072"
+            name="Симулятор" actor="true" human="true">
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="4da21836-748f-40bf-bea1-243444d7d5e6" targetElement="#64f86726-f966-4310-9fdc-619fbd954f10"
+              sourceElement="#cd8849ae-399f-467d-94a0-207d69247072"/>
+        </ownedEntities>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="5333fb48-9435-4794-aa11-eb1deb116156"
+            name="БВС">
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="2f73b063-a75c-4c1d-899a-bd4574e7affa" targetElement="#33e12995-2fbc-44c4-944b-bac3ade0df7f"
+              sourceElement="#5333fb48-9435-4794-aa11-eb1deb116156"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c4e4158f-3642-4c3f-9745-849f69dd27e1"
+              name="Полетный контроллер" abstractType="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
+          <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"
+              name="Полетный контроллер">
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="d622765f-3d8f-4e8b-8736-2d8c2d114b5c" targetElement="#ec64e099-ce1a-478d-83c5-92e617338019"
+                sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="89aeb9c5-a99d-4dbd-8dc9-498ac26a65b6" targetElement="#5b92df46-f4cf-4a64-9812-8629c47802b9"
+                sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="3e7ee9f7-ef2b-4537-92fb-8129b5081d0a" targetElement="#a1a7d72b-9051-4023-b1e4-6b94944f2472"
+                sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="96e54aa6-d1a0-46eb-b310-0ffeee4730b5" targetElement="#dad9fc47-39b1-4084-9121-a160acd10a49"
+                sourceElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"/>
+          </ownedEntities>
         </ownedEntities>
       </ownedEntityPkg>
     </ownedArchitectures>
@@ -131,17 +168,19 @@
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="f9773701-a076-40b6-b4c2-cdf6b1b35ae7" name="Root System Function">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="16c0733f-c56b-4811-9a6c-7e42eb262a51" name="Запрос координат для управления БВС">
+              id="16c0733f-c56b-4811-9a6c-7e42eb262a51" name="Ожидание координат для управления БВС">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="fe4233b0-3fc4-4bfc-bb72-257c53544e40" name="inОтвет"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="68e22288-62df-445f-9f7a-23e5a61f5424" name="outЗапрос"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="73fcc803-6d74-48e9-a09d-75d3747ce628" name="FOP 2"/>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="d673ac4a-18f6-4a8c-a5b5-b4b0f20c6607" targetElement="#ec64e099-ce1a-478d-83c5-92e617338019"
                 sourceElement="#16c0733f-c56b-4811-9a6c-7e42eb262a51"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="b763ea2b-4d62-49ad-be75-4bb239e3a696" name="Предоставление данных о себе">
+              id="b763ea2b-4d62-49ad-be75-4bb239e3a696" name="Предоставление данных">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="f68b2936-d3ea-45f3-99dc-f822884c9e87" name="inЗапрос"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -149,20 +188,6 @@
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="84d2b71f-a967-4aa7-9d5c-4a1240b4e266" targetElement="#e1bc4eb3-1c85-4391-be52-4da6ef985a8a"
                 sourceElement="#b763ea2b-4d62-49ad-be75-4bb239e3a696"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="fcbb6f5b-b56b-490d-9af5-ae4914701bae" name="Запросить информацию у базовых станций">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="ca27442c-508f-45d0-9fc1-2ddc9349d6c5" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="c4764f58-8b9e-4d98-a970-63c9d4cde9b4" name="FOP 1"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="ce872180-b696-478e-85da-bac8de197c5d" name="Обработать информацию и передать ее полетному контроллеру">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="958b8424-0cc5-4b99-8293-65b9606e53a8" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="6a8231e2-447b-47c8-9cb9-5ff8f25300bc" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="4358135d-cc54-469d-badd-97721b91fbad" name="Работа в режиме отладки">
@@ -185,48 +210,57 @@
                 sourceElement="#be554903-6399-49ef-b903-cca9fdc2d39a"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="a4710a65-4dfb-479b-84ec-eab9980bce4e" name="Работа в режиме отладки">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="e822241b-a4e8-4e16-8d20-c6897ec380e9" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="371a95e6-d8be-4b52-833c-33937e6a5cd5" name="FOP 1"/>
-          </ownedFunctions>
+              id="a7248288-3b45-4792-b921-f3ce6fad4136" name="Тестирование системы"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="a7248288-3b45-4792-b921-f3ce6fad4136" name="Тестирование системы">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="3c9299aa-6d7e-4166-936b-63e887bbabdb" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="0c1724c7-8717-4b1b-bf2e-0ec2e8286172" name="FOP 1"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="864de0fa-9108-4809-a008-e3ad91cb9d75" name="Взаимодействие с пользовательским интерфейсом системы">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="218a751e-df8a-470b-a1a0-ce21f459cf86" name="FIP 1"/>
+              id="864de0fa-9108-4809-a008-e3ad91cb9d75" name="Обновление базы данных">
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="2ffa7e82-ef4e-4adf-b4d9-a6974b6ef679" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="05366170-626b-4bf7-810a-e381c5aaece1" name="Работа в режиме пользовательского интерфейса">
+              id="1774c721-00a8-4773-9302-3f1f399f5ccf" name="Загрузка базы данных">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="94d78ae6-f72c-48ff-bf9a-265b96863c52" name="FIP 1"/>
+                id="2f1b6fa1-f6c1-47b0-a2c0-054bef530e55" name="FIP 1"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="f1600fed-a110-4a3f-bb46-ff0b43a83e05" name="FOP 1"/>
+                id="9eb06b72-5474-4140-b807-9f4473a53aed" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="7b144a35-eea2-4915-b49c-4ce1ea2ad3fe" name="Хранение базы данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="09e3e2a0-6a1f-4ecd-9293-2c05acbe15ba" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="bc29f1e5-5d73-41a2-ae9c-a4c29893f7b9" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="0e6159b3-684a-4eb5-b7f6-7485ff4470a5" name="Поиск по базе данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="9777cb6e-a285-4fb8-bad6-02f913a23fcf" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="9a4123e3-945c-4896-8808-0e56a6a62ed8" name="FIP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="e4062bb9-6762-448b-a257-187e3e4def3f" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="aec64515-7213-4073-b84f-ff7d8ece61ad" name="Вычисление местоположения БВС">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="545a199d-8bcd-4d65-83f6-91dd52367c02" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="abdd3835-e7c2-48ca-b25f-de31f690f75e" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="0a1b7aaf-3b50-4dbf-a5c7-d5ccc1331538" name="Управление модулем связи">
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="4acedc01-cc58-4747-8c20-269807cee2f4" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="c19806c2-091e-4f6a-9908-61558c9debcd" name="Работа веб-интерфейса"/>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="662408cb-aa26-4cb4-b703-8e142c910aeb" name="Управление БВС">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="e962ce3c-ca30-4822-9630-e13a42fb1977" name="FIP 1"/>
           </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="930a001d-b8db-4083-ab8f-eaf9f20c8196" targetElement="#f1b0f61c-79b0-4c7c-94b5-cbdaa510d851"
               sourceElement="#f9773701-a076-40b6-b4c2-cdf6b1b35ae7"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="8a7e4cc4-d63f-472e-97f0-956b071b3350" name="Сообщение с ответом"
-              target="#fe4233b0-3fc4-4bfc-bb72-257c53544e40" source="#6a8231e2-447b-47c8-9cb9-5ff8f25300bc"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="0edc2790-6f64-42ab-9729-2961ed1da43c" name="Ожидание координат БВС"
-              target="#ca27442c-508f-45d0-9fc1-2ddc9349d6c5" source="#68e22288-62df-445f-9f7a-23e5a61f5424"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="e65b6012-f293-4284-93b2-fa30b78ca5d2" name="Команда с запросом"
-              target="#f68b2936-d3ea-45f3-99dc-f822884c9e87" source="#c4764f58-8b9e-4d98-a970-63c9d4cde9b4"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="4f8ba98f-2372-4150-b7c1-590407b0c525" name="Сообщение с ответом"
-              target="#958b8424-0cc5-4b99-8293-65b9606e53a8" source="#3a8c7867-b4b6-4120-824f-1cef33c696a6"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="92908752-1a95-4e81-9a36-8a490fe93ebe" name="Отладочные команды"
               target="#dc93df9f-693d-4bc6-8e98-ec97be7afc86" source="#1380118c-0dd1-4c7d-bfe8-7e328b1e0a42">
@@ -242,17 +276,29 @@
                 sourceElement="#ec414414-b460-44ab-a139-02f9b17d5941"/>
           </ownedFunctionalExchanges>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="3ae59e8e-2f38-4420-88fd-e826b626ccba" name="Отладочные команды"
-              target="#e822241b-a4e8-4e16-8d20-c6897ec380e9" source="#0c1724c7-8717-4b1b-bf2e-0ec2e8286172"/>
+              id="55254a40-96d8-45eb-bc3a-8190d684210b" name="Файл базы данных" target="#09e3e2a0-6a1f-4ecd-9293-2c05acbe15ba"
+              source="#9eb06b72-5474-4140-b807-9f4473a53aed"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="0bd4f414-983e-4cfd-aa87-ab61618e994e" name="Реакция на отладочные команды"
-              target="#3c9299aa-6d7e-4166-936b-63e887bbabdb" source="#371a95e6-d8be-4b52-833c-33937e6a5cd5"/>
+              id="502a26dd-184a-47d2-b500-35b8968efb7f" name="База данных" target="#9777cb6e-a285-4fb8-bad6-02f913a23fcf"
+              source="#bc29f1e5-5d73-41a2-ae9c-a4c29893f7b9"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="0266da3e-cdbe-46c1-883d-b8159e6749ae" name="Команды" target="#94d78ae6-f72c-48ff-bf9a-265b96863c52"
+              id="193794bc-62e6-410a-be37-6c0f1f596bf6" name="Координаты рассматриваемых вышек"
+              target="#545a199d-8bcd-4d65-83f6-91dd52367c02" source="#e4062bb9-6762-448b-a257-187e3e4def3f"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="d07ceec7-4289-4fd8-8d63-d881d4d2d390" name="Координаты" target="#fe4233b0-3fc4-4bfc-bb72-257c53544e40"
+              source="#abdd3835-e7c2-48ca-b25f-de31f690f75e"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="82d6c329-0237-44c7-ba34-b4c30e7f2ef4" name="Файл базы данных" target="#2f1b6fa1-f6c1-47b0-a2c0-054bef530e55"
               source="#2ffa7e82-ef4e-4adf-b4d9-a6974b6ef679"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="32f89b8e-4502-4562-bc3e-ef153db38ca0" name="Информация" target="#218a751e-df8a-470b-a1a0-ce21f459cf86"
-              source="#f1600fed-a110-4a3f-bb46-ff0b43a83e05"/>
+              id="982284cc-e073-403c-af34-c163e301adf4" name="Запрос на получение идентификаторов"
+              target="#f68b2936-d3ea-45f3-99dc-f822884c9e87" source="#4acedc01-cc58-4747-8c20-269807cee2f4"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="f6e6065a-b6cb-4b29-9b93-aade6c63c8dc" name="Индентификаторы ближайших вышек"
+              target="#9a4123e3-945c-4896-8808-0e56a6a62ed8" source="#3a8c7867-b4b6-4120-824f-1cef33c696a6"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="c42b40aa-fa50-4eda-bec4-238fc073604e" name="Решения о действиях"
+              target="#e962ce3c-ca30-4822-9630-e13a42fb1977" source="#73fcc803-6d74-48e9-a09d-75d3747ce628"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -373,32 +419,31 @@
             name="Базовые станции" abstractType="#40626a1f-3b96-4b59-af95-20d0861ac671"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="2e1e7174-502c-4d78-9059-b3d9c73afb3b"
             name="Оператор" abstractType="#df4c903a-2cf0-4250-a53d-0d25f84e71e2"/>
-        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
-            id="c171ab3d-b434-4f3e-a8a7-fc994d121df5" name="Интерфейс передачи данных"
-            source="#0bd58771-d183-4d10-8bd5-b0de8fa1c803" target="#854ad333-63d6-4402-9fcb-c8a9b2fceeac"
-            kind="FLOW"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6" name="Модуль определения геолокации по базовым станциям">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="a09bb408-3e6c-4a7c-b22b-e6d62691d71a" targetElement="#fcbb6f5b-b56b-490d-9af5-ae4914701bae"
+              id="f313903e-bc69-44d4-bf5e-54edebb711b4" targetElement="#1774c721-00a8-4773-9302-3f1f399f5ccf"
               sourceElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="8251763f-635b-451e-b0de-06c0f0bf6560" targetElement="#ce872180-b696-478e-85da-bac8de197c5d"
+              id="4502a1f7-cf30-48ba-9999-5d00b8234789" targetElement="#7b144a35-eea2-4915-b49c-4ce1ea2ad3fe"
               sourceElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="a95807d9-2027-47f7-8d5f-f8980861d3f8" targetElement="#a4710a65-4dfb-479b-84ec-eab9980bce4e"
+              id="4a7ef22d-0f8f-456f-8200-0ebe9ec1d814" targetElement="#0e6159b3-684a-4eb5-b7f6-7485ff4470a5"
               sourceElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="3e74238c-26e0-4d5a-b932-cbb12c77e7be" targetElement="#05366170-626b-4bf7-810a-e381c5aaece1"
+              id="461d8316-2ec9-4525-ae61-3f31100de9a9" targetElement="#aec64515-7213-4073-b84f-ff7d8ece61ad"
+              sourceElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="02353c05-e983-4048-85e4-1bcb26deaadd" targetElement="#0a1b7aaf-3b50-4dbf-a5c7-d5ccc1331538"
+              sourceElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="4f8f6f7d-4584-4e22-86e7-97d0ec5fa7a5" targetElement="#c19806c2-091e-4f6a-9908-61558c9debcd"
               sourceElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"/>
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
               id="8727fa38-5610-400c-8f74-625ae9e6d619" name="System State Machine">
             <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                 id="457d132a-8dfe-468a-8ed0-5f7365e3a5ad" name="Default Region"/>
           </ownedStateMachines>
-          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-              id="0bd58771-d183-4d10-8bd5-b0de8fa1c803" name="CP 1" orientation="OUT"
-              kind="FLOW"/>
         </ownedSystemComponents>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="137fa8b2-2f1e-4ed2-bdc9-bea1419922dd" name="Полетный контроллер" actor="true">
@@ -408,9 +453,9 @@
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="7b02f142-5e64-4052-8807-1d69d27d7eb9" targetElement="#16c0733f-c56b-4811-9a6c-7e42eb262a51"
               sourceElement="#137fa8b2-2f1e-4ed2-bdc9-bea1419922dd"/>
-          <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-              id="854ad333-63d6-4402-9fcb-c8a9b2fceeac" name="CP 1" orientation="IN"
-              kind="FLOW"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="f349e722-2f8d-4697-ad9e-2c36fd016fdd" targetElement="#662408cb-aa26-4cb4-b703-8e142c910aeb"
+              sourceElement="#137fa8b2-2f1e-4ed2-bdc9-bea1419922dd"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="4f5278f8-22e0-4626-9704-eb9caa0481cd" targetElement="#46cf75ae-35a2-44c1-9cfc-40f09ed7b1ad"
               sourceElement="#137fa8b2-2f1e-4ed2-bdc9-bea1419922dd"/>
@@ -459,7 +504,7 @@
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="6f61b625-8b9b-49d3-bde4-f932db37ad12" name="Root Logical Function">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="eb4dc30b-fd81-4ceb-93cf-f7658e209fa0" name="Запрос координат для управления БВС">
+              id="eb4dc30b-fd81-4ceb-93cf-f7658e209fa0" name="Ожидание координат для управления БВС">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="26b846ba-3dad-417c-996e-21feff10ebda" name="inОтвет">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
@@ -472,6 +517,8 @@
                   id="af0aaad2-ee99-4bab-8090-7ee9188e2e68" targetElement="#68e22288-62df-445f-9f7a-23e5a61f5424"
                   sourceElement="#a97b9a59-949e-4304-acb9-e88063dedb8a"/>
             </outputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="1b71915f-0a7b-494e-9818-2c6970db4f78" name="FOP 2"/>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="556b8b91-b6e7-44bc-8194-5bb9dda9cb70" targetElement="#16c0733f-c56b-4811-9a6c-7e42eb262a51"
                 sourceElement="#eb4dc30b-fd81-4ceb-93cf-f7658e209fa0"/>
@@ -479,89 +526,51 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="19511268-c651-4560-8d5b-a4e5f9c5c73c" name="Предоставление данных о себе">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="5bd5728b-58b0-4f7b-b2c8-626b19bd5c83" name="inЗапрос">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="c071255c-c995-47a9-b1f8-a0459252607c" targetElement="#f68b2936-d3ea-45f3-99dc-f822884c9e87"
-                  sourceElement="#5bd5728b-58b0-4f7b-b2c8-626b19bd5c83"/>
-            </inputs>
+                id="980cbb50-3d07-4a87-82b5-ae66f34153c3" name="FIP 2"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="e675efc8-2f25-403f-9e28-ced56e5e03e2" name="outОтвет">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="4720ca32-a99a-4ba1-b7cf-17f6987337bf" targetElement="#3a8c7867-b4b6-4120-824f-1cef33c696a6"
-                  sourceElement="#e675efc8-2f25-403f-9e28-ced56e5e03e2"/>
-            </outputs>
+                id="4ec36ce8-6b4c-4e9c-aef1-5cf215702032" name="FOP 1"/>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="a3d3990c-d125-403e-849f-cacf09ccfcf6" targetElement="#b763ea2b-4d62-49ad-be75-4bb239e3a696"
                 sourceElement="#19511268-c651-4560-8d5b-a4e5f9c5c73c"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="d4c6863e-b077-4b64-bbc6-db230c2acad9" name="Запросить информацию у базовых станций">
+              id="537af2c1-ea00-402b-b999-6f912d725b8e" name="Работа в режиме отладки">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="edf2cc59-bf4b-413c-a14b-4a813d2b38a4" name="FIP 1">
+                id="13a2c0d7-1ca9-402e-bcfb-5446625b954a" name="inОтладочные команды">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="7eea810f-29af-4f7d-9557-55fec0451cef" targetElement="#ca27442c-508f-45d0-9fc1-2ddc9349d6c5"
-                  sourceElement="#edf2cc59-bf4b-413c-a14b-4a813d2b38a4"/>
+                  id="fae38069-b3c9-47d0-a2ca-77860841a93f" targetElement="#dc93df9f-693d-4bc6-8e98-ec97be7afc86"
+                  sourceElement="#13a2c0d7-1ca9-402e-bcfb-5446625b954a"/>
             </inputs>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="83c3efec-d043-4b18-b706-ab851d85b0ff" name="FOP 1">
+                id="c195c726-93b4-4139-958a-9fa59565b725" name="outОтвет">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="31f7915c-ef92-48e9-a765-f39c02bd6f6f" targetElement="#c4764f58-8b9e-4d98-a970-63c9d4cde9b4"
-                  sourceElement="#83c3efec-d043-4b18-b706-ab851d85b0ff"/>
+                  id="9246aefd-88fd-4a78-8e40-5ac02b7a68b7" targetElement="#876d9c99-bb65-47f3-bba5-1de56fd00a80"
+                  sourceElement="#c195c726-93b4-4139-958a-9fa59565b725"/>
             </outputs>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
-                id="9297381f-dfce-4312-8787-12547f6d6bc9" targetElement="#fcbb6f5b-b56b-490d-9af5-ae4914701bae"
-                sourceElement="#d4c6863e-b077-4b64-bbc6-db230c2acad9"/>
+                id="81de520d-20f3-4728-8bfa-6527df76ac0f" targetElement="#4358135d-cc54-469d-badd-97721b91fbad"
+                sourceElement="#537af2c1-ea00-402b-b999-6f912d725b8e"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="10a29c91-3162-4001-aa4a-8f445b40424f" name="Передать координаты полетному контроллеру">
+              id="cf5c0468-6eb8-45c0-951e-5bc1411c6c91" name="Тестирование устройства">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="2dc530c8-c39c-4469-95ff-b031a94ff7e1" name="FIP 1">
+                id="f6eb8e30-45a9-4621-a082-f82f012b7820" name="inОтвет">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="3969be68-63a4-4e83-8b2f-e099433f262c" targetElement="#958b8424-0cc5-4b99-8293-65b9606e53a8"
-                  sourceElement="#2dc530c8-c39c-4469-95ff-b031a94ff7e1"/>
+                  id="33491367-d19d-48fc-87b3-b05201bb4883" targetElement="#09d054a6-3680-4983-8df9-a9bf268cd6af"
+                  sourceElement="#f6eb8e30-45a9-4621-a082-f82f012b7820"/>
             </inputs>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="59cf49c8-638b-43a0-9029-3e7273fb2bd2" name="FOP 1">
+                id="edf36566-74ee-41da-a20b-a97289a0f84d" name="outОтладочные команды">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="90bb82ba-f1df-4702-b731-2c1d81085c87" targetElement="#6a8231e2-447b-47c8-9cb9-5ff8f25300bc"
-                  sourceElement="#59cf49c8-638b-43a0-9029-3e7273fb2bd2"/>
+                  id="9484f081-87bc-4352-ad26-abada067c26c" targetElement="#1380118c-0dd1-4c7d-bfe8-7e328b1e0a42"
+                  sourceElement="#edf36566-74ee-41da-a20b-a97289a0f84d"/>
             </outputs>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
-                id="a4540342-cced-459f-8b3a-933aa1a8ebf1" targetElement="#ce872180-b696-478e-85da-bac8de197c5d"
-                sourceElement="#10a29c91-3162-4001-aa4a-8f445b40424f"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="e1391301-781a-419e-8773-35455947bb25" name="Работа в режиме отладки">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="7714ba3d-a7dd-4243-ac9f-f41d59b9a0d6" name="FIP 1">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="95c12aa7-c59f-4d5c-bf41-f1f79d159e17" targetElement="#e822241b-a4e8-4e16-8d20-c6897ec380e9"
-                  sourceElement="#7714ba3d-a7dd-4243-ac9f-f41d59b9a0d6"/>
-            </inputs>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="72112174-178e-4167-ae83-55aac641b3dd" name="FOP 1">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="3e3d3a5a-ebfb-467b-a97e-d2676e8fe1f8" targetElement="#371a95e6-d8be-4b52-833c-33937e6a5cd5"
-                  sourceElement="#72112174-178e-4167-ae83-55aac641b3dd"/>
-            </outputs>
-            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
-                id="ae34e046-ed38-41ed-85f7-335e64d14baa" targetElement="#a4710a65-4dfb-479b-84ec-eab9980bce4e"
-                sourceElement="#e1391301-781a-419e-8773-35455947bb25"/>
+                id="ae078fde-32cf-4e79-b946-bf4824d0b4e8" targetElement="#be554903-6399-49ef-b903-cca9fdc2d39a"
+                sourceElement="#cf5c0468-6eb8-45c0-951e-5bc1411c6c91"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="71407ad8-829b-4692-92a2-17438a707a47" name="Тестирование системы">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="f5e08727-4cc0-4895-ad72-1edce33b83a6" name="FIP 1">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="39074aa5-f995-4145-99af-90001f168a87" targetElement="#3c9299aa-6d7e-4166-936b-63e887bbabdb"
-                  sourceElement="#f5e08727-4cc0-4895-ad72-1edce33b83a6"/>
-            </inputs>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="6524d6ff-3465-4a54-83f4-93507e53d34d" name="FOP 1">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="f2cae913-94a1-4013-9029-2d656b22ba3f" targetElement="#0c1724c7-8717-4b1b-bf2e-0ec2e8286172"
-                  sourceElement="#6524d6ff-3465-4a54-83f4-93507e53d34d"/>
-            </outputs>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="27c0e73c-3255-4868-8f0d-f11bb527d759" targetElement="#a7248288-3b45-4792-b921-f3ce6fad4136"
                 sourceElement="#71407ad8-829b-4692-92a2-17438a707a47"/>
@@ -574,37 +583,11 @@
                 id="c033123f-972c-4df9-9095-238d1133a425" name="FOP 2"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="95c11523-62d3-4d7e-b5bd-ee3a0c02983f" name="Работа с базой данных">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="adcbc6a3-5da8-46c7-a755-fa0cafec3d3d" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="1db10878-fe6e-4c84-9825-93d10abdd57b" name="FOP 1"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="0b5edb21-d9d3-45ee-b2eb-4e171647d6fe" name="Вычисление координат БВС">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="bd1181de-4c5c-41b8-89e6-9db37b0945e3" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="6900a4c0-e0cb-4fe5-b691-60e11bb5778c" name="FOP 1"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="276ff722-069c-48d8-aebc-8ab647e6ff45" name="Управление модулем связи">
-            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="d5fcc658-bb3b-4496-a07e-8ee021efa009" name="FIP 1"/>
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="4f6f2662-1106-4bd9-82df-0de0f922e449" name="FOP 1"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="dd43fab8-b36d-4443-a0aa-832637433b36" name="Обновление и редактирование базы данных">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="970d2816-2b07-44f0-919a-0ec9f3dd6f33" name="FIP 1"/>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="5f986c10-f5db-4b8a-8b53-12433c4f3f3d" name="FIP 2"/>
-          </ownedFunctions>
-          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="0d09da57-fa0b-4ace-b282-340f070153b6" name="Отследить данные о БВС">
-            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="b7180013-41ef-49ab-8bd5-96e65163121e" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="2b47cd88-d02f-4440-a86b-82b2436f370c" name="Обновить базу данных">
@@ -618,55 +601,218 @@
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="bcdeab9c-6393-44ce-919f-55687e7bc571" name="FIP 2"/>
           </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="1f86ee12-2fa4-46a7-9b96-7b91280ce23e" name="Обновление базы данных">
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="f8668168-4dfc-47e5-94d7-6cc64c9c58bc" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="827d53ba-9f51-4e4f-9734-2917b253694b" targetElement="#2ffa7e82-ef4e-4adf-b4d9-a6974b6ef679"
+                  sourceElement="#f8668168-4dfc-47e5-94d7-6cc64c9c58bc"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="7f2232d9-8379-4e0d-ac1a-4bc5818deee2" targetElement="#864de0fa-9108-4809-a008-e3ad91cb9d75"
+                sourceElement="#1f86ee12-2fa4-46a7-9b96-7b91280ce23e"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="a9a5ca7e-f9a4-49d9-b714-8f9145ab84f2" name="Загрузка базы данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="9c131dee-933e-4758-9803-2dcc8680e921" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="9d0070c5-01da-4688-8316-54424142cf20" targetElement="#2f1b6fa1-f6c1-47b0-a2c0-054bef530e55"
+                  sourceElement="#9c131dee-933e-4758-9803-2dcc8680e921"/>
+            </inputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="bb4e795b-4881-43ae-801b-c47971e49ce7" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="412d3748-f595-4eac-a38d-990c0a02dd2d" targetElement="#9eb06b72-5474-4140-b807-9f4473a53aed"
+                  sourceElement="#bb4e795b-4881-43ae-801b-c47971e49ce7"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="847d3c26-92b1-4bc1-a571-834662733e3c" targetElement="#1774c721-00a8-4773-9302-3f1f399f5ccf"
+                sourceElement="#a9a5ca7e-f9a4-49d9-b714-8f9145ab84f2"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="1b88df39-39a2-4b3b-910e-8c7e12d23608" name="Хранение базы данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="501f4522-d5e3-4700-97be-8ff59853ef38" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="e107d673-5cf6-4cf7-a01d-56210f1f1534" targetElement="#09e3e2a0-6a1f-4ecd-9293-2c05acbe15ba"
+                  sourceElement="#501f4522-d5e3-4700-97be-8ff59853ef38"/>
+            </inputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="6f5fae79-8c36-43ff-adaa-cb2a967dd0db" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="13fc27d1-707a-48b1-8454-f422f349ddb2" targetElement="#bc29f1e5-5d73-41a2-ae9c-a4c29893f7b9"
+                  sourceElement="#6f5fae79-8c36-43ff-adaa-cb2a967dd0db"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="de403e90-1252-4003-bab3-8736252f112e" targetElement="#7b144a35-eea2-4915-b49c-4ce1ea2ad3fe"
+                sourceElement="#1b88df39-39a2-4b3b-910e-8c7e12d23608"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="c3a01044-7b41-4f91-8ce8-8feee7200e89" name="Поиск по базе данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="aea5c530-77f3-4a8e-ad6a-6a5de93dec19" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="02d6799c-0473-4ecf-997f-b188abcee1fe" targetElement="#9777cb6e-a285-4fb8-bad6-02f913a23fcf"
+                  sourceElement="#aea5c530-77f3-4a8e-ad6a-6a5de93dec19"/>
+            </inputs>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="8b169da8-e038-4a0a-982f-d64fb3225a36" name="FIP 2">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="0dac938c-50fe-48ee-8ac5-18b38ef6e3b9" targetElement="#9a4123e3-945c-4896-8808-0e56a6a62ed8"
+                  sourceElement="#8b169da8-e038-4a0a-982f-d64fb3225a36"/>
+            </inputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="11446c6b-bbbb-440d-be88-321caa8c2027" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="2b6030b3-0cea-4f27-8a22-ecc369537dd0" targetElement="#e4062bb9-6762-448b-a257-187e3e4def3f"
+                  sourceElement="#11446c6b-bbbb-440d-be88-321caa8c2027"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="98a0a5d6-42ac-41f5-a99e-8b57491c0922" targetElement="#0e6159b3-684a-4eb5-b7f6-7485ff4470a5"
+                sourceElement="#c3a01044-7b41-4f91-8ce8-8feee7200e89"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="8eefaa77-620c-4147-9ddd-8fe9cc07eee4" name="Вычисление местоположения БВС">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="cbb2a14d-abb8-47b3-a596-96ff10ddbc0b" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="fbdd3ce8-3570-4701-8196-b648aa8a0331" targetElement="#545a199d-8bcd-4d65-83f6-91dd52367c02"
+                  sourceElement="#cbb2a14d-abb8-47b3-a596-96ff10ddbc0b"/>
+            </inputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="9d838778-852a-4ddb-abd1-60f388bff218" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="9b6bca28-cc73-4182-94e4-d9f770951c3c" targetElement="#abdd3835-e7c2-48ca-b25f-de31f690f75e"
+                  sourceElement="#9d838778-852a-4ddb-abd1-60f388bff218"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="f17de0f2-a056-4590-9ef9-37e7999ee443" targetElement="#aec64515-7213-4073-b84f-ff7d8ece61ad"
+                sourceElement="#8eefaa77-620c-4147-9ddd-8fe9cc07eee4"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="ada44770-ac81-4a7b-8a53-2cb2ed258a02" name="Получение идентификаторов ближайших вышек">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="2eb740cc-e50d-4cdb-bd5c-7abc87dfbde9" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="1c4cc66a-759a-42c1-bcf7-459d873230ca" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="328f918c-aef2-4d1e-bbb0-2fd6227b43ff" name="Управление модулем связи">
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="6a23bd1c-3a97-4082-8e56-9d6922b83977" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="d84c28dc-b0a6-40f9-a1e8-a3214bd75d51" targetElement="#4acedc01-cc58-4747-8c20-269807cee2f4"
+                  sourceElement="#6a23bd1c-3a97-4082-8e56-9d6922b83977"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="d7c320f5-8a38-424f-8bea-517f64e0687a" targetElement="#0a1b7aaf-3b50-4dbf-a5c7-d5ccc1331538"
+                sourceElement="#328f918c-aef2-4d1e-bbb0-2fd6227b43ff"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="109166bc-2484-4bad-8a1d-8d20d415b188" name="Запрос идентификаторы ближайших вышек">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="16d9ba38-235d-4869-86b6-e9f551d8a65d" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="b309bb12-5f6f-41e5-bd3a-cf75d71e794f" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="ca6ea0ee-425a-4b24-8226-d5f5c80f8cf6" name="Работа веб-интерфейса">
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="70b58575-201a-4aa0-9a21-e1d9999a127e" targetElement="#c19806c2-091e-4f6a-9908-61558c9debcd"
+                sourceElement="#ca6ea0ee-425a-4b24-8226-d5f5c80f8cf6"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="fc04347f-fa07-4183-8e57-675bede4b3e3" name="Управление модулем связи">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="0d9903b3-c86a-4ae3-a93e-5a37654a0b90" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="5f589320-7e5b-45a4-bb5f-cfc806a6b904" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="2a7c2a87-80c8-4272-b656-9e29978561a2" name="FOP 2"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="c26786ea-906a-4af4-8dd9-96145aa086ac" name="Получение данных о ближаших вышках">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="4e16b53e-7229-4346-87ff-fb8a87130d42" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="062a5bbe-23eb-426e-9928-5a61c653d2e7" name="FIP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="fb85c117-083b-4e04-91b5-5132bdabeb33" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="c22ce036-1553-4366-a624-61e993e36fa9" name="FOP 2"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="e9523f22-12a8-4160-a07f-57779bb620be" name="Поиск координат вышек по базе данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="a70dd5ad-9de6-468d-b68d-b16c1182f5f3" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="d14c094c-5aa5-4b11-8aab-47b9c7f0b742" name="FIP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="0634c924-289b-4540-b3d6-1200c868983f" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="ceae6ee5-80d5-4652-a1e1-5216aa9051c1" name="FOP 2"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="c2d6fcb4-5f2e-4f35-b95a-b41a1eb22ccf" name="Загрузка файла базы данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="a91c5ee9-d19f-44fb-a4f8-06285137b727" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="8529ce38-e5a8-4525-9766-a9d2122f8c94" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="e4f100d1-02e7-4a6c-b1d5-01f5ffce333f" name="Хранение базы данных">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="5a43ca0d-eb3d-403b-929c-4e522e4bcc74" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="942600d7-5855-4fd7-b4b7-1dbc65d40e97" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="fc90244f-9590-4d05-8309-29bcde401886" name="Нахождение координат методом триангуляции"
+              description="">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="6cdd772a-ae10-41e3-9fb7-16f1a08e50e6" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="64368cc1-6fe1-4304-bc78-212780bbe872" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="ed821019-703c-406b-8aa7-4835af1952ce" name="FOP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="bf1e0c7e-de8d-4bdc-9885-f2f09d8d7ba0" name="FOP 3"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="ecf36485-ee37-4251-a42e-a9d95026d992" name="Сохранение последних нескольких найденных координат БВС">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="fa18f8ee-bd4a-4b61-b965-ba41ab8dc6c1" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="717b7830-fc51-45fc-8640-9d743903a3b8" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="600f8f75-73b7-4793-8589-5e3a3222c364" name="Нахождение координат методом экстраполяции">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="23e2f8d7-bcee-4310-8f9b-fc49c96c5b57" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="e117231b-168c-46b5-b953-2753ada5715c" name="FIP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="b6797477-9851-4cc7-a83d-199da2eee7de" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="5e12cba8-bbbf-48a3-886b-60c762708fea" name="Передача координат">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="102dd3b5-7a5c-420b-aad5-bcc64ce4868a" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="587250e5-af96-4730-a2d7-df0ba6dfca7b" name="FIP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="5b200e1c-1b73-4753-b84f-e0ea3e9296b6" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="2bab2576-a514-455a-bdb5-98a46cd01668" name="Управление БВС">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="614c7b41-eb23-4593-b631-aade879b4cf3" name="FIP 1"/>
+          </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="e8ee7f09-a0b4-47c7-bb49-b62e64409aa2" targetElement="#f9773701-a076-40b6-b4c2-cdf6b1b35ae7"
               sourceElement="#6f61b625-8b9b-49d3-bde4-f932db37ad12"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="952b7a9d-39f0-48d7-a6dd-e07f8bba5777" name="Сообщение с ответом"
-              target="#26b846ba-3dad-417c-996e-21feff10ebda" source="#59cf49c8-638b-43a0-9029-3e7273fb2bd2">
-            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
-                id="4b57a5d4-ff40-4298-8d00-b784d876dda3" targetElement="#8a7e4cc4-d63f-472e-97f0-956b071b3350"
-                sourceElement="#952b7a9d-39f0-48d7-a6dd-e07f8bba5777"/>
-          </ownedFunctionalExchanges>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="5aea9c0a-7136-42da-a715-0a5bf794bb14" name="Команда с запросом"
-              target="#5bd5728b-58b0-4f7b-b2c8-626b19bd5c83" source="#83c3efec-d043-4b18-b706-ab851d85b0ff">
-            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
-                id="f40001e2-aac3-4b50-8773-6eb467cb81a3" targetElement="#e65b6012-f293-4284-93b2-fa30b78ca5d2"
-                sourceElement="#5aea9c0a-7136-42da-a715-0a5bf794bb14"/>
-          </ownedFunctionalExchanges>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="0efbf9d1-8db2-4264-a93d-8916abfa54c9" name="Отладочные команды"
-              target="#7714ba3d-a7dd-4243-ac9f-f41d59b9a0d6" source="#6524d6ff-3465-4a54-83f4-93507e53d34d">
-            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
-                id="9b61e2f4-7ea1-4f3c-a787-35b1c547a88f" targetElement="#3ae59e8e-2f38-4420-88fd-e826b626ccba"
-                sourceElement="#0efbf9d1-8db2-4264-a93d-8916abfa54c9"/>
-          </ownedFunctionalExchanges>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="9bba2255-ef3c-4a22-80d8-5dca7267f481" name="Реакция на отладочные команды"
-              target="#f5e08727-4cc0-4895-ad72-1edce33b83a6" source="#72112174-178e-4167-ae83-55aac641b3dd">
-            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
-                id="75c78e9e-f3fb-4fb0-a1d2-fd672924e0e0" targetElement="#0bd4f414-983e-4cfd-aa87-ab61618e994e"
-                sourceElement="#9bba2255-ef3c-4a22-80d8-5dca7267f481"/>
-          </ownedFunctionalExchanges>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="19d9b60b-ab6f-4b0c-a4ea-cc9c9633f84c" name="Ожидание координат БВС"
-              target="#d5fcc658-bb3b-4496-a07e-8ee021efa009" source="#a97b9a59-949e-4304-acb9-e88063dedb8a"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="a307f2ca-0ef4-45c4-ac75-262ad80a6a03" name="Команда" target="#edf2cc59-bf4b-413c-a14b-4a813d2b38a4"
-              source="#4f6f2662-1106-4bd9-82df-0de0f922e449"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="5fcd3729-ed57-4c17-8e1c-c007babeaffa" name="Сообщение с ответом"
-              target="#adcbc6a3-5da8-46c7-a755-fa0cafec3d3d" source="#e675efc8-2f25-403f-9e28-ced56e5e03e2"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="1ea152ca-b806-4c34-84b4-70604b0ef93b" name="" target="#bd1181de-4c5c-41b8-89e6-9db37b0945e3"
-              source="#1db10878-fe6e-4c84-9825-93d10abdd57b"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="80ffe715-7d24-43f6-acac-03a16cb12ea5" name="" target="#2dc530c8-c39c-4469-95ff-b031a94ff7e1"
-              source="#6900a4c0-e0cb-4fe5-b691-60e11bb5778c"/>
-          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="41b7f85e-bafb-4da7-992a-369feadab51f" name="Пользовательский интерфейс"
-              target="#970d2816-2b07-44f0-919a-0ec9f3dd6f33" source="#ccaffd81-4df0-495b-8102-a5a54ac9d829"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="f95f90bc-8f47-4060-9ce4-657ade981b09" name="" target="#5f986c10-f5db-4b8a-8b53-12433c4f3f3d"
               source="#f4c3e20f-7964-4a91-970c-f7375f875a78"/>
@@ -674,8 +820,108 @@
               id="4d1961a0-a781-48f9-bce2-e713f11f6043" name="" target="#c6a395f9-3cc0-4ce2-b0e1-83d183cbea4f"
               source="#c033123f-972c-4df9-9095-238d1133a425"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="c05eacd4-5d4f-4c4a-965f-3bf513355824" name="Пользовательский интерфейс"
-              target="#bcdeab9c-6393-44ce-919f-55687e7bc571" source="#b7180013-41ef-49ab-8bd5-96e65163121e"/>
+              id="862c25eb-0116-45f7-974f-99ccf25133c6" name="Отладочные команды"
+              target="#13a2c0d7-1ca9-402e-bcfb-5446625b954a" source="#edf36566-74ee-41da-a20b-a97289a0f84d">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="fda0a9f4-6ef1-4a95-ad35-99b44de215c5" targetElement="#92908752-1a95-4e81-9a36-8a490fe93ebe"
+                sourceElement="#862c25eb-0116-45f7-974f-99ccf25133c6"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="55d76b6a-bd34-45a7-8e2d-89ed1cf73d28" name="Ответ" target="#f6eb8e30-45a9-4621-a082-f82f012b7820"
+              source="#c195c726-93b4-4139-958a-9fa59565b725">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="02eb01b7-1575-4d20-ac61-8edc112be54f" targetElement="#ec414414-b460-44ab-a139-02f9b17d5941"
+                sourceElement="#55d76b6a-bd34-45a7-8e2d-89ed1cf73d28"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="79bd80f3-fd23-4287-bce5-57d466c1b66a" name="Файл базы данных" target="#501f4522-d5e3-4700-97be-8ff59853ef38"
+              source="#bb4e795b-4881-43ae-801b-c47971e49ce7">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="faa64c17-496f-453d-9fc4-0595c7e4c3ee" targetElement="#55254a40-96d8-45eb-bc3a-8190d684210b"
+                sourceElement="#79bd80f3-fd23-4287-bce5-57d466c1b66a"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="5311cd2a-b537-4ece-aa52-62a8e00d4462" name="База данных" target="#aea5c530-77f3-4a8e-ad6a-6a5de93dec19"
+              source="#6f5fae79-8c36-43ff-adaa-cb2a967dd0db">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="b3e70cf8-24b0-454b-82cd-0142973b2ee5" targetElement="#502a26dd-184a-47d2-b500-35b8968efb7f"
+                sourceElement="#5311cd2a-b537-4ece-aa52-62a8e00d4462"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="719c4e1c-3260-4554-82e7-4751ccf65383" name="Идентификаторы ближайших вышек"
+              target="#8b169da8-e038-4a0a-982f-d64fb3225a36" source="#1c4cc66a-759a-42c1-bcf7-459d873230ca"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="8bf300c4-4007-42f0-9179-d22d99ca9c35" name="команда" target="#16d9ba38-235d-4869-86b6-e9f551d8a65d"
+              source="#6a23bd1c-3a97-4082-8e56-9d6922b83977"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="d0d338f3-55ff-4639-8db2-2f0b4fdab1f0" name="Координаты рассматриваемых вышек"
+              target="#cbb2a14d-abb8-47b3-a596-96ff10ddbc0b" source="#11446c6b-bbbb-440d-be88-321caa8c2027">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="32d8e6ac-6275-41ba-97de-23c4b6b5d067" targetElement="#193794bc-62e6-410a-be37-6c0f1f596bf6"
+                sourceElement="#d0d338f3-55ff-4639-8db2-2f0b4fdab1f0"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="d93bc6e8-0f21-4823-b9c7-102234cd77ee" name="Координаты" target="#26b846ba-3dad-417c-996e-21feff10ebda"
+              source="#9d838778-852a-4ddb-abd1-60f388bff218">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="7306fe26-6b55-4f5d-9555-96c1a50ddcfd" targetElement="#d07ceec7-4289-4fd8-8d63-d881d4d2d390"
+                sourceElement="#d93bc6e8-0f21-4823-b9c7-102234cd77ee"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="19de77b9-e445-4d10-8684-c417bbf01289" name="Файл базы данных" target="#9c131dee-933e-4758-9803-2dcc8680e921"
+              source="#f8668168-4dfc-47e5-94d7-6cc64c9c58bc">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="92e15a5e-495a-42ad-848e-9c7292d293f3" targetElement="#82d6c329-0237-44c7-ba34-b4c30e7f2ef4"
+                sourceElement="#19de77b9-e445-4d10-8684-c417bbf01289"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="6b7255ae-c928-4d4f-8e04-7d8c60404959" name="Команды" target="#4e16b53e-7229-4346-87ff-fb8a87130d42"
+              source="#5f589320-7e5b-45a4-bb5f-cfc806a6b904"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="faf40e60-6ea5-4808-9908-5f250887b297" name="Ответы" target="#0d9903b3-c86a-4ae3-a93e-5a37654a0b90"
+              source="#fb85c117-083b-4e04-91b5-5132bdabeb33"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="db71ef25-2d54-4098-a07c-728d83842f97" name="Идентификаторы вышек"
+              target="#a70dd5ad-9de6-468d-b68d-b16c1182f5f3" source="#2a7c2a87-80c8-4272-b656-9e29978561a2"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="a5c6d35c-d748-4478-acf2-d7a3ceb0f6bc" name="Запрос на предоставление идентификаторов"
+              target="#980cbb50-3d07-4a87-82b5-ae66f34153c3" source="#c22ce036-1553-4366-a624-61e993e36fa9"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="80d5efdb-12fd-4561-95ba-3f25268fedf9" name="База данных" target="#d14c094c-5aa5-4b11-8aab-47b9c7f0b742"
+              source="#942600d7-5855-4fd7-b4b7-1dbc65d40e97"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="ef93414a-18a3-4505-b4cb-fcb6a586ae95" name="Файл базы данных" target="#5a43ca0d-eb3d-403b-929c-4e522e4bcc74"
+              source="#8529ce38-e5a8-4525-9766-a9d2122f8c94"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="0474dd3c-136a-4d3d-93b4-03e6dd2807ee" name="FunctionalExchange 20"
+              target="#23e2f8d7-bcee-4310-8f9b-fc49c96c5b57" source="#717b7830-fc51-45fc-8640-9d743903a3b8"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="19ddf1a4-40f7-4e24-8b36-46ca16da0cb9" name="Координаты БВС" target="#102dd3b5-7a5c-420b-aad5-bcc64ce4868a"
+              source="#b6797477-9851-4cc7-a83d-199da2eee7de"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="f3a33466-e01e-4164-9835-2ff70583f6cd" name="Координаты БВС" target="#587250e5-af96-4730-a2d7-df0ba6dfca7b"
+              source="#64368cc1-6fe1-4304-bc78-212780bbe872"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="c6266e4d-c213-4e98-82f9-7b32b747c1e0" name="Координаты БВС" target="#fa18f8ee-bd4a-4b61-b965-ba41ab8dc6c1"
+              source="#ed821019-703c-406b-8aa7-4835af1952ce"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="b4a8d567-bf52-4e78-9a1f-393b502ae490" name="Координаты вышек" target="#6cdd772a-ae10-41e3-9fb7-16f1a08e50e6"
+              source="#0634c924-289b-4540-b3d6-1200c868983f"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="dd933138-a09c-44d0-82fb-63ee97cb28e5" name="отсутствие данных" target="#e117231b-168c-46b5-b953-2753ada5715c"
+              source="#ceae6ee5-80d5-4652-a1e1-5216aa9051c1"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="715cde87-e87f-45be-bcbf-fba8cd6b0398" name="Координаты БВС" target="#26b846ba-3dad-417c-996e-21feff10ebda"
+              source="#5b200e1c-1b73-4753-b84f-e0ea3e9296b6"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="f76691eb-2dc8-48bf-a74a-8b66ae718961" name="Решения управления"
+              target="#614c7b41-eb23-4593-b631-aade879b4cf3" source="#1b71915f-0a7b-494e-9818-2c6970db4f78"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="2b9a64a4-d900-474a-adcb-e224bc62f80f" name="Файл базы данных" target="#a91c5ee9-d19f-44fb-a4f8-06285137b727"
+              source="#ccaffd81-4df0-495b-8102-a5a54ac9d829"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="3f06e6c2-4301-4e55-9dec-22e86240e172" name="Идентификаторы" target="#062a5bbe-23eb-426e-9928-5a61c653d2e7"
+              source="#4ec36ce8-6b4c-4e9c-aef1-5cf215702032"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
@@ -696,74 +942,67 @@
             id="751fecb2-6354-4744-bf4a-a4bf26b1dfa0" targetElement="#2e1e7174-502c-4d78-9059-b3d9c73afb3b"
             sourceElement="#c7fd699d-fa49-4816-bbcf-f8f746f34a0a"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="85549454-93bc-4953-a506-2a754f2eefba"
-            name="Модуль определения геолокации с помощью базовых станций" abstractType="#1ff58d86-f6fe-49b4-866e-f10e53bbcaca"/>
+            name="Модуль определения геолокации по базовым станциям" abstractType="#1ff58d86-f6fe-49b4-866e-f10e53bbcaca"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="0fa8d116-b211-4133-947b-a90153b9295f"
             name="Полетный контроллер" abstractType="#7bdc36de-2d75-41a3-bf74-d8151cd9fb7b"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="3eb35ce0-f194-40ff-a6e9-46daa7e03471"
             name="Базовые станции" abstractType="#027fd097-2480-45b7-8e87-009f025b0b82"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="c7fd699d-fa49-4816-bbcf-f8f746f34a0a"
             name="Оператор" abstractType="#eeb5d0d1-d6ee-4dc5-b6b4-4af72389c0b4"/>
-        <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
-            id="dccdd476-e495-4150-87a4-8897fa510aa7" name="Интерфейс передачи данных"
-            source="#a74a58b8-91f4-4213-86c7-538c8cbcbd33" target="#ef4776c3-bbe6-488e-8bd9-5cd0dc217322"
-            kind="FLOW">
-          <ownedComponentExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeRealization"
-              id="025920f4-7c29-4481-9d6e-ec4e84f86c9b" targetElement="#c171ab3d-b434-4f3e-a8a7-fc994d121df5"
-              sourceElement="#dccdd476-e495-4150-87a4-8897fa510aa7"/>
-        </ownedComponentExchanges>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-            id="1ff58d86-f6fe-49b4-866e-f10e53bbcaca" name="Модуль определения геолокации с помощью базовых станций">
+            id="1ff58d86-f6fe-49b4-866e-f10e53bbcaca" name="Модуль определения геолокации по базовым станциям">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
               id="a74a58b8-91f4-4213-86c7-538c8cbcbd33" name="CP 1" orientation="OUT"
-              kind="FLOW">
-            <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                id="4b2d4e09-7d5f-4ee7-8c07-fd7527d5b49b" targetElement="#0bd58771-d183-4d10-8bd5-b0de8fa1c803"
-                sourceElement="#a74a58b8-91f4-4213-86c7-538c8cbcbd33"/>
-          </ownedFeatures>
-          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="cd654a3b-7af9-4253-8d81-cfa9cfa43d48"
-              name="Модуль связи" abstractType="#ecff0d3e-686f-4fc5-8f4e-5b651cae1ae4"/>
-          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="39a4feea-1fd6-4773-b5af-5de6a5708a85"
-              name="Вычислительный блок" abstractType="#0fae7089-e4da-4bca-8137-2de008a71605"/>
+              kind="FLOW"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="fc69757a-c39d-475f-8026-cd3c991fdee3"
+              name="Микрокомпьютер" abstractType="#3dc32e6e-a314-4bf0-b55e-f2813d66a786"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="17f93a03-5281-41ee-b9bb-4f2e57fa4e39"
+              name="Модуль связи" abstractType="#191baf92-f0d8-4346-b5f2-0fea4f963132"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="3bf960cf-ce96-442e-a393-e386ff348298" targetElement="#4cda8a7b-7ed1-43cc-969a-bd6c4d8836e6"
               sourceElement="#1ff58d86-f6fe-49b4-866e-f10e53bbcaca"/>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-              id="ecff0d3e-686f-4fc5-8f4e-5b651cae1ae4" name="Модуль связи">
-            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="e3cd5a30-744d-4a74-bb98-0d51a3e0804f" targetElement="#d4c6863e-b077-4b64-bbc6-db230c2acad9"
-                sourceElement="#ecff0d3e-686f-4fc5-8f4e-5b651cae1ae4"/>
+              id="3dc32e6e-a314-4bf0-b55e-f2813d66a786" name="Микрокомпьютер">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="fb560df6-e873-4108-a700-82b3db73107d"
+                name="Сервер веб-интерфейса и работы с базой данных" abstractType="#dd28443c-9987-42c4-b933-3337212f1f87"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="56ad2c35-781c-4cde-aa57-f73990a3de63"
+                name="Сервис вычисления геолокации" abstractType="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="dd28443c-9987-42c4-b933-3337212f1f87" name="Сервер веб-интерфейса и работы с базой данных">
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="072c3859-57e5-4666-822e-a99f93d15c74" targetElement="#c2d6fcb4-5f2e-4f35-b95a-b41a1eb22ccf"
+                  sourceElement="#dd28443c-9987-42c4-b933-3337212f1f87"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="f74527d1-ed7d-42c5-a809-297a72e039d2" targetElement="#e4f100d1-02e7-4a6c-b1d5-01f5ffce333f"
+                  sourceElement="#dd28443c-9987-42c4-b933-3337212f1f87"/>
+            </ownedLogicalComponents>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="efe23a62-1d46-4d57-942c-b1f4330f8d0a" name="Сервис вычисления геолокации">
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="2e52ec7b-924e-421d-ad84-545b88156f4a" targetElement="#fc04347f-fa07-4183-8e57-675bede4b3e3"
+                  sourceElement="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="52ae34df-4b75-4d8a-ac1b-b7923bee8d64" targetElement="#e9523f22-12a8-4160-a07f-57779bb620be"
+                  sourceElement="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="d5385817-1a8e-4a91-9590-f0641be787c8" targetElement="#fc90244f-9590-4d05-8309-29bcde401886"
+                  sourceElement="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="905b979e-6d3d-4b1d-ba6b-6a05d4dbda9e" targetElement="#ecf36485-ee37-4251-a42e-a9d95026d992"
+                  sourceElement="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="1aaba4e1-bb9d-44a0-8e20-ae4bcfbe6a83" targetElement="#600f8f75-73b7-4793-8589-5e3a3222c364"
+                  sourceElement="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                  id="8447b9f1-4b72-4d8c-9bbd-f639d904bd6c" targetElement="#5e12cba8-bbbf-48a3-886b-60c762708fea"
+                  sourceElement="#efe23a62-1d46-4d57-942c-b1f4330f8d0a"/>
+            </ownedLogicalComponents>
           </ownedLogicalComponents>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-              id="0fae7089-e4da-4bca-8137-2de008a71605" name="Вычислительный блок">
+              id="191baf92-f0d8-4346-b5f2-0fea4f963132" name="Модуль связи">
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="6a88beb7-8bf4-447e-8927-3eb248d4e31e" targetElement="#e1391301-781a-419e-8773-35455947bb25"
-                sourceElement="#0fae7089-e4da-4bca-8137-2de008a71605"/>
-            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="81ba9756-82ce-4576-a5b6-b11fd8c29bec" targetElement="#10a29c91-3162-4001-aa4a-8f445b40424f"
-                sourceElement="#0fae7089-e4da-4bca-8137-2de008a71605"/>
-            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="c718593e-c4fa-499d-b5c2-d95a476f63af" targetElement="#95c11523-62d3-4d7e-b5bd-ee3a0c02983f"
-                sourceElement="#0fae7089-e4da-4bca-8137-2de008a71605"/>
-            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="1800172e-1538-46bd-9071-e32856c3c04f" targetElement="#0b5edb21-d9d3-45ee-b2eb-4e171647d6fe"
-                sourceElement="#0fae7089-e4da-4bca-8137-2de008a71605"/>
-            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                id="378fa667-76a9-4cbd-917a-663884e7dd0a" targetElement="#276ff722-069c-48d8-aebc-8ab647e6ff45"
-                sourceElement="#0fae7089-e4da-4bca-8137-2de008a71605"/>
-            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="8119d0a4-1b52-4144-9d13-d65dfa1ec6d1"
-                name="Пользовательский интерфейс" abstractType="#e900f734-c0e7-459f-b494-e84ba1440807"/>
-            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-                id="e900f734-c0e7-459f-b494-e84ba1440807" name="Пользовательский интерфейс">
-              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                  id="d3761208-af7a-46da-9c40-4349b27534e7" targetElement="#1d5be5d7-1e43-4715-a6b2-de1c6da7f155"
-                  sourceElement="#e900f734-c0e7-459f-b494-e84ba1440807"/>
-              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                  id="51871104-f9cb-4683-bf69-fd2e1ea906e0" targetElement="#dd43fab8-b36d-4443-a0aa-832637433b36"
-                  sourceElement="#e900f734-c0e7-459f-b494-e84ba1440807"/>
-              <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-                  id="25e5e1c6-b58e-432a-a018-f4347c303d09" targetElement="#c58e61b6-bf72-411d-b2bf-acbe917c65a9"
-                  sourceElement="#e900f734-c0e7-459f-b494-e84ba1440807"/>
-            </ownedLogicalComponents>
+                id="a8742412-57ab-4c23-bd16-03548229f399" targetElement="#c26786ea-906a-4af4-8dd9-96145aa086ac"
+                sourceElement="#191baf92-f0d8-4346-b5f2-0fea4f963132"/>
           </ownedLogicalComponents>
         </ownedLogicalComponents>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
@@ -774,13 +1013,12 @@
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="5bc0c4d8-7962-46fa-994c-b32e12d56317" targetElement="#eb4dc30b-fd81-4ceb-93cf-f7658e209fa0"
               sourceElement="#7bdc36de-2d75-41a3-bf74-d8151cd9fb7b"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="3dfe34a0-ed5c-4ebb-864e-2b3204a520dd" targetElement="#2bab2576-a514-455a-bdb5-98a46cd01668"
+              sourceElement="#7bdc36de-2d75-41a3-bf74-d8151cd9fb7b"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
               id="ef4776c3-bbe6-488e-8bd9-5cd0dc217322" name="CP 1" orientation="IN"
-              kind="FLOW">
-            <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                id="aaae5fe7-39d7-40ac-9178-4969e73a9aac" targetElement="#854ad333-63d6-4402-9fcb-c8a9b2fceeac"
-                sourceElement="#ef4776c3-bbe6-488e-8bd9-5cd0dc217322"/>
-          </ownedFeatures>
+              kind="FLOW"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="042f4019-e284-40a7-a88e-f6652ae7993a" targetElement="#137fa8b2-2f1e-4ed2-bdc9-bea1419922dd"
               sourceElement="#7bdc36de-2d75-41a3-bf74-d8151cd9fb7b"/>
@@ -800,16 +1038,25 @@
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="eeb5d0d1-d6ee-4dc5-b6b4-4af72389c0b4" name="Оператор" actor="true">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
+              id="223f0280-1897-4442-9ca6-95cc0c34f0d5" targetElement="#6397d22a-8eed-46d2-ad79-8cf2315427ab"
+              sourceElement="#59602572-bfed-4d2f-b400-3fbc35b1d0c6"/>
+          <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
               id="5f543a43-64b7-4a02-a05a-0bd6ac4ce274" targetElement="#b5b35097-a976-4d11-9224-9277634e9559"
               sourceElement="#ea538c8a-ed4d-41fc-8aab-c886fb45390f"/>
+          <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
+              id="9ceae127-51c9-4e34-8985-e9c513dbd9c0" targetElement="#cecc9661-b85c-4040-8fa4-5f1cec6fedcc"
+              sourceElement="#6ed9b457-931e-4ca6-822b-12d320d0582f"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="59602572-bfed-4d2f-b400-3fbc35b1d0c6" targetElement="#cf5c0468-6eb8-45c0-951e-5bc1411c6c91"
+              sourceElement="#eeb5d0d1-d6ee-4dc5-b6b4-4af72389c0b4"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="ea538c8a-ed4d-41fc-8aab-c886fb45390f" targetElement="#71407ad8-829b-4692-92a2-17438a707a47"
               sourceElement="#eeb5d0d1-d6ee-4dc5-b6b4-4af72389c0b4"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="03604166-b0f9-42c9-8ee6-768ad71766ff" targetElement="#0d09da57-fa0b-4ace-b282-340f070153b6"
+              id="38d4548b-dfb6-41c0-bacf-01cfa676163e" targetElement="#2b47cd88-d02f-4440-a86b-82b2436f370c"
               sourceElement="#eeb5d0d1-d6ee-4dc5-b6b4-4af72389c0b4"/>
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-              id="38d4548b-dfb6-41c0-bacf-01cfa676163e" targetElement="#2b47cd88-d02f-4440-a86b-82b2436f370c"
+              id="6ed9b457-931e-4ca6-822b-12d320d0582f" targetElement="#1f86ee12-2fa4-46a7-9b96-7b91280ce23e"
               sourceElement="#eeb5d0d1-d6ee-4dc5-b6b4-4af72389c0b4"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="4b30ea77-2ef4-4ab0-9a26-f034855d6f00" targetElement="#df4c903a-2cf0-4250-a53d-0d25f84e71e2"
