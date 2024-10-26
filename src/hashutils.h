@@ -21,5 +21,4 @@ void parse_and_insert_db(const char *filename, struct Node **hash_table);
 void insert_into_hash_table(struct Node **hash_table, uint16_t MCC, uint16_t MNC, uint32_t CID, float ALT, float LONG);
 struct Node *search_in_hash_table(struct Node **hash_table, uint16_t MCC, uint16_t MNC, uint32_t CID);
 void free_hash_table(struct Node **hash_table, size_t size);
-
 #endif 

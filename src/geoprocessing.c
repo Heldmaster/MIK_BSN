@@ -6,17 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-
-void UART1_SendString(char *String) {
-    printf("%s", String);
-}
-
-void UART2_SendString(char *String) {
-    printf("%s", String);
-}
-
-uint8_t ParseCENGresponse(char *response, struct CellTower *towers) {
+uint8_t parse_ceng_response(char *response, struct celltower *towers) {
     uint8_t count = 0;
     char *line = strtok(response, "\r\n");
 
@@ -31,9 +21,9 @@ uint8_t ParseCENGresponse(char *response, struct CellTower *towers) {
                 towers[count].MNC = tempMNC;
                 towers[count].LAC = tempLAC;
                 towers[count].CID = tempCID;
-                towers[count].receiveLevel = tempLevel;
+                towers[count].RECEIVELEVEL = tempLevel;
                 count++;
-                printf("Parsed main tower: MCC=%d, MNC=%d, LAC=%d, CID=%d, ReceiveLevel=%d\n",
+                printf("Parsed main tower: MCC=%d, MNC=%d, LAC=%d, CID=%d, RECEIVELEVEL=%d\n",
                        tempMCC, tempMNC, tempLAC, tempCID, tempLevel);
             } else {
                 printf("Failed to parse main tower.\n"); 
@@ -48,9 +38,9 @@ uint8_t ParseCENGresponse(char *response, struct CellTower *towers) {
                     towers[count].MNC = tempMNC;
                     towers[count].LAC = tempLAC;
                     towers[count].CID = tempCID;
-                    towers[count].receiveLevel = tempLevel;
+                    towers[count].RECEIVELEVEL = tempLevel;
                     count++;
-                    printf("Parsed tower: MCC=%d, MNC=%d, LAC=%d, CID=%d, ReceiveLevel=%d\n",
+                    printf("Parsed tower: MCC=%d, MNC=%d, LAC=%d, CID=%d, RECEIVELEVEL=%d\n",
                            tempMCC, tempMNC, tempLAC, tempCID, tempLevel);
                 }
             } else {
@@ -65,14 +55,14 @@ uint8_t ParseCENGresponse(char *response, struct CellTower *towers) {
     return count;
 }
 
-double signal_to_distance(int16_t receiveLevel, double frequency) {
-    double PL = receiveLevel; 
+double signal_to_distance(int16_t RECEIVELEVEL, double frequency) {
+    double PL = RECEIVELEVEL; 
     double d = pow(10, (PL - 20 * log10(frequency) + 147.55) / 20);
     return d; 
 }
 
 // трилатерация
-struct Location trilaterate(struct CellTower *towers, uint8_t towerCount, struct Node **hash_table) {
+struct Location trilaterate(struct celltower *towers, uint8_t towerCount, struct Node **hash_table) {
     double totalX = 0.0, totalY = 0.0;
     double totalWeight = 0.0;
 
@@ -84,7 +74,7 @@ struct Location trilaterate(struct CellTower *towers, uint8_t towerCount, struct
             continue; 
         }
 
-        double distance = signal_to_distance(towers[i].receiveLevel, 900e6);
+        double distance = signal_to_distance(towers[i].RECEIVELEVEL, 900e6);
         totalX += tower->LONG * distance;
         totalY += tower->LAT * distance;
         totalWeight += distance; 

@@ -91,7 +91,7 @@ struct Node *search_in_hash_table(struct Node **hash_table, uint16_t MCC, uint16
     return NULL;
 }
 
-// Очистка памяти хеш-таблицы ТУТ УТЕЧКА!
+// Очистка памяти хеш-таблицы
 void free_hash_table(struct Node **hash_table, size_t size) {
     for (size_t i = 0; i < size; i++) {
         struct Node *current = hash_table[i];

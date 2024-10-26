@@ -4,14 +4,12 @@
 #include "geoprocessing.h"
 #include "hashutils.h"
 
-#define MAX_TOWERS 7
-
 size_t DBSIZE;
 
 int main() {
     const char *filename = "250.csv";
     DBSIZE = count_db_lines(filename);
-    struct CellTower RESPONSE_BUF[MAX_TOWERS];
+    struct celltower RESPONSE_BUF[7];
 
     struct Node **hash_table = (struct Node **) calloc(DBSIZE, sizeof(struct Node *));
     if (!hash_table) {
@@ -33,12 +31,12 @@ int main() {
                       "+CENG: 6,\"0063,25,17,4bd6,250,99,6d06\"\n";
     printf("Starting ParseCENGresponse...\n");
 
-    uint8_t parsed_count = ParseCENGresponse(response, RESPONSE_BUF);
+    uint8_t parsed_count = parse_ceng_response(response, RESPONSE_BUF);
     printf("Finished ParseCENGresponse. Parsed %d towers.\n", parsed_count);
 
     for (int i = 0; i < parsed_count; i++) {
         printf("CellTower %d: MCC=%d, MNC=%d, LAC=%d, CID=%d, ReceiveLevel=%d\n",
-               i, RESPONSE_BUF[i].MCC, RESPONSE_BUF[i].MNC, RESPONSE_BUF[i].LAC, RESPONSE_BUF[i].CID, RESPONSE_BUF[i].receiveLevel);
+               i, RESPONSE_BUF[i].MCC, RESPONSE_BUF[i].MNC, RESPONSE_BUF[i].LAC, RESPONSE_BUF[i].CID, RESPONSE_BUF[i].RECEIVELEVEL);
     }
 
     struct Node *result = search_in_hash_table(hash_table, 250,1,214716422);

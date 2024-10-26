@@ -19,17 +19,15 @@ struct Location {
     double longitude;
 };
 
-struct CellTower {
+struct celltower {
     uint16_t MCC;      // Код страны
     uint16_t MNC;      // Код оператора
     uint16_t LAC;      // Код региона
     uint32_t CID;      // CellID
-    int16_t receiveLevel;
+    int16_t RECEIVELEVEL;
 };
 
-void UART1_SendString(char *String);
-void UART2_SendString(char *String);
-uint8_t ParseCENGresponse(char *response, struct CellTower *);
-struct Location trilaterate(struct CellTower *towers, uint8_t towerCount, struct Node **hash_table);
+uint8_t parse_ceng_response(char *response, struct celltower *);
+struct Location trilaterate(struct celltower *towers, uint8_t towerCount, struct Node **hash_table);
 
 #endif
